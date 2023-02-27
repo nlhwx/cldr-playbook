@@ -25,15 +25,15 @@
     state: present
     key: https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
 
-- name: Install MySQL package
-  yum: 
-    name:
-      - mysql
-      - mysql-server
-    state: present
+#- name: Install MySQL package
+#  yum: 
+#    name:
+#      - mysql
+#      - mysql-server
+#    state: present
 
-- name: Clean MySQL datadir
-  command: "rm -rf /var/lib/mysql/data/*"
+#- name: Clean MySQL datadir
+#  command: "rm -rf /var/lib/mysql/data/*"
 
 - name: Install MySQL
   include_role:
