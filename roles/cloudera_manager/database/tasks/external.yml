@@ -39,6 +39,15 @@
   - cloudera_manager_database_type == 'postgresql'
   - cloudera_manager_database_host in groups.db_server | default([])
 
+#- name: Reload privilege tables when skip-grant-tables is enabled in MySQL
+#  command: 'mysql -ne "{{ item }}"'
+#  with_items:
+#    - FLUSH PRIVILEGES
+#  connection: ssh
+#  when:
+#  - cloudera_manager_database_type == 'mysql' or cloudera_manager_database_type == 'mariadb'
+#  - cloudera_manager_database_host in groups.db_server | default([])
+
 - name: Create Cloudera Manager database user
   mysql_user:
     name: "{{ cloudera_manager_database_user }}"

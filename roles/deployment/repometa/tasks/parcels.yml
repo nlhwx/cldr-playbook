@@ -28,17 +28,11 @@
     loop_var: repository
   check_mode: no
 
-- name: DEBUG - manifests answer
-  debug:  
-    msg: "{{ manifests.results }}"
-  when: debug | default(False)
-
 - name: Extract product details from parcel manifests
   set_fact:
     products: >
       {{ manifests.results
-      | map(attribute='content')
-      | map('from_json')
+      | map(attribute='json')
       | list
       | extract_products_from_manifests
       | dict2items(key_name='product', value_name='version')

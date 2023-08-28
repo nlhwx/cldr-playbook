@@ -13,8 +13,19 @@
 # limitations under the License.
 
 ---
-mysql_connector_url: https://cdn.mysql.com/archives/mysql-connector-java-5.1/mysql-connector-java-5.1.47.zip
-mysql_connector_checksum: md5:c83017d13655f71e192389c70bb6bc93
-mysql_connector_download_dir: "{{ local_temp_dir }}"
-mysql_connector_extract_dir: "{{ local_temp_dir }}"
-mysql_connector_local_path: "{{ mysql_connector_extract_dir }}/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar"
+
+- name: Install MariaDB apt key
+  apt_key:
+    url: https://mariadb.org/mariadb_release_signing_key.asc
+    state: present
+  when: not (skip_rdbms_repo_setup | default(False))
+
+- name: Install MariaDB apt repository
+  apt_repository:
+    repo: deb [arch=amd64,arm64,ppc64el] https://downloads.mariadb.com/MariaDB/mariadb-{{ database_version }}/repo/ubuntu/ bionic main
+    state: present
+  when: not (skip_rdbms_repo_setup | default(False))
+
+- name: Install MariaDB
+  include_role:
+    name: ansible-role-mysql

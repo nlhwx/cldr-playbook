@@ -67,9 +67,9 @@
   notify:
     - restart cloudera-scm-agent
 
-- name: Copy Python lib files for Hue with Python 3.8
-  include_tasks: python_lib_file_copy.yml
-  when: cloudera_cdh_version is version('7.1.8','>=') and database_type == 'postgresql'
+#- name: Copy Python lib files for Hue with Python 3.8
+#  include_tasks: python_lib_file_copy.yml
+#  when: cloudera_cdh_version is version('7.1.8','>=') and database_type == 'postgresql'
 
 - name: Restart Cloudera Manager agent if required
   meta: flush_handlers

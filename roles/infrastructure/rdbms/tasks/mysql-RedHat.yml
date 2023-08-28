@@ -13,8 +13,28 @@
 # limitations under the License.
 
 ---
-mysql_connector_url: https://cdn.mysql.com/archives/mysql-connector-java-5.1/mysql-connector-java-5.1.47.zip
-mysql_connector_checksum: md5:c83017d13655f71e192389c70bb6bc93
-mysql_connector_download_dir: "{{ local_temp_dir }}"
-mysql_connector_extract_dir: "{{ local_temp_dir }}"
-mysql_connector_local_path: "{{ mysql_connector_extract_dir }}/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar"
+
+- name: Install MySQL 5.7 repository
+  yum:
+    name: http://repo.mysql.com//mysql57-community-release-el7-9.noarch.rpm
+    state: present
+  when: not (skip_rdbms_repo_setup | default(False))
+
+- name: Import RPM Key from a url
+  rpm_key:
+    state: present
+    key: https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+
+#- name: Install MySQL package
+#  yum: 
+#    name:
+#      - mysql
+#      - mysql-server
+#    state: present
+
+#- name: Clean MySQL datadir
+#  command: "rm -rf /var/lib/mysql/data/*"
+
+- name: Install MySQL
+  include_role:
+    name: geerlingguy.mysql

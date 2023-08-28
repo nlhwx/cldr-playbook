@@ -13,8 +13,21 @@
 # limitations under the License.
 
 ---
-mysql_connector_url: https://cdn.mysql.com/archives/mysql-connector-java-5.1/mysql-connector-java-5.1.47.zip
-mysql_connector_checksum: md5:c83017d13655f71e192389c70bb6bc93
-mysql_connector_download_dir: "{{ local_temp_dir }}"
-mysql_connector_extract_dir: "{{ local_temp_dir }}"
-mysql_connector_local_path: "{{ mysql_connector_extract_dir }}/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar"
+mysql_daemon: mysqld
+mysql_packages: ['mysql-server', 'MySQL-python']
+mysql_pid_file: /var/run/mysqld/mysqld.pid
+mysql_socket: /var/lib/mysql/mysql.sock
+mysql_datadir: /var/lib/mysql/data
+mysql_log_error: /var/log/mysqld.log
+mysql_syslog_tag: mysqld
+mysql_user_home: /root
+mysql_user_name: root
+mysql_user_password: Password123!
+mysql_root_home: /root
+mysql_root_username: root
+mysql_root_password: Password123!
+mysql_root_password_update: true
+mysql_enabled_on_startup: true
+mysql_innodb_large_prefix: 0
+mysql_config_include_files:
+  - src: files/cloudera.cnf
