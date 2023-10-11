@@ -25,7 +25,6 @@ unnecessary_services:
   - bluetooth
   - chronyd
   - cups
-  - ip6tables
   - postfix
   - tuned
 
