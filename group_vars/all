@@ -1,7 +1,7 @@
 ---
 database_host: "{{ groups['db_server'][0] | default('localhost') }}"
-database_type: postgresql
-database_version: 10
+database_type: mysql
+database_version: 5.7
 
 # You can skip users and groups creation if you ensure they will exist
 # This may be useful if the users and groups are managed externally
