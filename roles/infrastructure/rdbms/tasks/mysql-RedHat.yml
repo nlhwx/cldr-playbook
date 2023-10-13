@@ -37,5 +37,4 @@
 
 - name: Install MySQL
   include_role:
-    name: geerlingguy.mysql
-    become: yes
+    name: fix/geerlingguy_mysql_mod
