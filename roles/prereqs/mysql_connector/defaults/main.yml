@@ -13,8 +13,8 @@
 # limitations under the License.
 
 ---
-mysql_connector_url: https://cdn.mysql.com/archives/mysql-connector-java-5.1/mysql-connector-java-5.1.47.zip
-mysql_connector_checksum: md5:c83017d13655f71e192389c70bb6bc93
+mysql_connector_url: https://cdn.mysql.com//Downloads/Connector-J/mysql-connector-j-8.1.0.zip
+mysql_connector_checksum: md5:d745362823ec4d37fa0607746d40a1b9
 mysql_connector_download_dir: "{{ local_temp_dir }}"
 mysql_connector_extract_dir: "{{ local_temp_dir }}"
-mysql_connector_local_path: "{{ mysql_connector_extract_dir }}/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar"
+mysql_connector_local_path: "{{ mysql_connector_extract_dir }}/mysql-connector-j-8.1.0/mysql-connector-j-8.1.0.jar"
